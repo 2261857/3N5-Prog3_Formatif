@@ -36,6 +36,14 @@ fun racineCarre(x: Double): Double {
         resultat++
     }
     val fractions:Array<Double> = arrayOf(0.1, 0.01, 0.001, 0.0001)
-    for (chiffre in fractions)
-    return 0.0
+    for (chiffre in fractions){
+        var base: Double = resultat
+        for (i: Int in 0..9){
+            var test: Double = base + (chiffre * i)
+            if (test.pow(2) <= x ){
+                resultat=test
+            }
+        }
+    }
+    return resultat
 }
