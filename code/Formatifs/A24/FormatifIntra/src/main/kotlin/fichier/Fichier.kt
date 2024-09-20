@@ -1,16 +1,20 @@
 package fichier
 
 import java.io.File
+import kotlin.io.path.fileVisitor
 
 fun main() {
     // Tu peux tester tes fonctions en les appellants ici.
+    lire()
 }
 
 /**
  * (1 point) Affiche dans la console le contenu du fichier message.txt qui se trouve dans le projet de départ.
  */
 fun lire() {
-
+    var fichier : File = File("message.txt")
+    var contenu : String = fichier.readText(Charsets.UTF_8)
+    println(contenu)
 }
 
 /**
@@ -22,5 +26,14 @@ fun lire() {
  * Si tout s'est bien passé, on retourne la valeur 1.
  */
 fun ecrire(args: Array<String>): Int {
+        if (args.size != 2){
+            println("Il n'y a pas 2 éléments")
+            return 1
+        }
+    var fichier = File(args[0])
+    var txt = File(args[1])
+    fichier.createNewFile()
+    var contenu : String = fichier.readText(Charsets.UTF_8)
+
     return 1
 }
