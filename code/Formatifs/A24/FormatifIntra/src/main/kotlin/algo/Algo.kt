@@ -1,5 +1,7 @@
 package algo
 
+import kotlin.math.pow
+
 fun main() {
     // Tu peux tester la fonction en l'appelant ici.
 }
@@ -29,5 +31,11 @@ fun racineCarre(x: Double): Double {
           fin du pour sur les fraction
           renvoyer resultat
      */
+    var resultat: Double = 0.0
+    while ((resultat+1).pow(2) <= x){
+        resultat++
+    }
+    val fractions:Array<Double> = arrayOf(0.1, 0.01, 0.001, 0.0001)
+    for (chiffre in fractions)
     return 0.0
 }

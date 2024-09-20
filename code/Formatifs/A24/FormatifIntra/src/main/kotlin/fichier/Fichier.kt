@@ -6,6 +6,9 @@ import kotlin.io.path.fileVisitor
 fun main() {
     // Tu peux tester tes fonctions en les appellants ici.
     lire()
+    var args: Array<String> = arrayOf("pipo.txt", "message.txt")
+    ecrire(args)
+
 }
 
 /**
@@ -26,14 +29,18 @@ fun lire() {
  * Si tout s'est bien passé, on retourne la valeur 1.
  */
 fun ecrire(args: Array<String>): Int {
-        if (args.size != 2){
-            println("Il n'y a pas 2 éléments")
-            return 1
-        }
+    if (args.size != 2) {
+        println("Il n'y a pas 2 éléments")
+        return 1
+    }
     var fichier = File(args[0])
     var txt = File(args[1])
     fichier.createNewFile()
-    var contenu : String = fichier.readText(Charsets.UTF_8)
-
+    var contenu = txt.bufferedReader().readLine()
+    for (ligne in contenu) {
+        fichier.writeText(fichier.readText() + ligne + "\n")
+    }
     return 1
 }
+
+
