@@ -1,12 +1,13 @@
 package fichier
 
 import java.io.File
+import java.nio.charset.Charset
 import kotlin.io.path.fileVisitor
 
 fun main() {
     // Tu peux tester tes fonctions en les appellants ici.
     lire()
-    var args: Array<String> = arrayOf("pipo.txt", "message.txt")
+    var args : Array<String> = arrayOf("pipo.txt", "message.txt")
     ecrire(args)
 
 }
@@ -15,7 +16,7 @@ fun main() {
  * (1 point) Affiche dans la console le contenu du fichier message.txt qui se trouve dans le projet de départ.
  */
 fun lire() {
-    var fichier : File = File("message.txt")
+   var fichier : File = File("message.txt")
     var contenu : String = fichier.readText(Charsets.UTF_8)
     println(contenu)
 }
@@ -29,17 +30,18 @@ fun lire() {
  * Si tout s'est bien passé, on retourne la valeur 1.
  */
 fun ecrire(args: Array<String>): Int {
-    if (args.size != 2) {
-        println("Il n'y a pas 2 éléments")
-        return 1
+    if (args.size !=2){
+        println("Erreur")
+        return -1
     }
     var fichier = File(args[0])
     var txt = File(args[1])
     fichier.createNewFile()
-    var contenu = txt.bufferedReader().readLine()
+    var contenu = txt.readText()
     for (ligne in contenu) {
-        fichier.writeText(fichier.readText() + ligne + "\n")
+        fichier.writeText((fichier.readText(Charsets.UTF_8)+ligne).toString())
     }
+
     return 1
 }
 
